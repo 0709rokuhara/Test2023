@@ -1,22 +1,18 @@
-import turtle
+import tkinter as tk
 
-t=turtle.Turtle()
-t.hideturtle()
-t.circle(50)
-t.right(90)
-t.forward(110)
-t.right(45)
-t.forward(70)
-t.backward(70)
-t.left(90)
-t.forward(70)
-t.backward(70)
-t.home()
-t.right(90)
-t.forward(45)
-t.right(120)
-t.forward(70)
-t.backward(70)
-t.right(120)
-t.forward(70)
-turtle.done()
+root = tk.Tk()
+root.geometry("300x200")
+
+# Canvasの作成
+canvas = tk.Canvas(root, bg = "white")
+# Canvasを配置
+canvas.pack(fill = tk.BOTH, expand = True)
+
+# 線の描画
+canvas.create_line(150, 150, 200, 190, fill = "black", width = 3)
+canvas.create_line(150, 150, 100, 190, fill = "black", width = 3)
+canvas.create_line(150, 150, 150, 65, fill = "black", width = 3)
+canvas.create_line(150, 105, 200, 75, fill = "black", width = 3)
+canvas.create_line(150, 105, 100, 75, fill = "black", width = 3)
+canvas.create_oval(122, 5, 180, 65, width = 3)
+root.mainloop()
