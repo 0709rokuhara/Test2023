@@ -84,20 +84,25 @@ class_labels = {
 }
 
 folder_path = "labels"
+#指定したディレクトリ内のファイル名のリスト取得
 file_list = os.listdir(folder_path)
 file_list.sort()
-
+#各クラスが表示されたかどうか調べるため
 visited_classes = set()
 
 for filename in file_list:
     file_path = os.path.join(folder_path, filename)
     with open(file_path, "r") as file:
+        #ファイルのすべての行をリストとして読み込みます
         lines = file.readlines()
+        #linesの各行についてループ
         for line in lines:
+            #行の先頭と末尾の空白文字消去
             line = line.strip()
-            if line:
-                class_id = int(line.split()[0])
+            if line: #空の行でないとき
+                class_id = int(line.split()[0]) #整数に変換、先頭要素を取得
+                #ラベルの重複がないようにする
                 if class_id in class_labels and class_id not in visited_classes:
-                    class_name = class_labels[class_id]
+                    class_name = class_labels[class_id] #クラス名を取得し、格納
                     print(class_name)
                     visited_classes.add(class_id)
